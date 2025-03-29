@@ -263,6 +263,7 @@ M.edit_with_instructions = function(output_lines, bufnr, selection, ...)
         if vim.fn.mode() == "i" then
           vim.api.nvim_command("stopinsert")
         end
+        vim.cmd("diffoff!")
         vim.cmd("q")
       end, { noremap = true })
     end
@@ -354,6 +355,7 @@ M.edit_with_instructions = function(output_lines, bufnr, selection, ...)
   -- close_n
   if Config.options.edit_with_instructions.keymaps.close_n then
     instructions_input:map("n", Config.options.edit_with_instructions.keymaps.close_n, function()
+      vim.cmd("diffoff!")
       vim.cmd("q")
     end, { noremap = true })
   end
